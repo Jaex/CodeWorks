@@ -22,6 +22,7 @@
 
 #endregion License Information (GPL v3)
 
+using CodeWorks.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +39,7 @@ namespace CodeWorks
         public MainForm()
         {
             InitializeComponent();
+            Icon = Resources.Icon;
         }
 
         private void btnFindRegionAreas_Click(object sender, EventArgs e)
