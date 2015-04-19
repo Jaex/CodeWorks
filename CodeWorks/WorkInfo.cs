@@ -28,6 +28,7 @@ using System.ComponentModel;
 using System.Drawing.Design;
 using System.IO;
 using System.Text;
+using System.Windows.Forms.Design;
 
 namespace CodeWorks
 {
@@ -35,6 +36,7 @@ namespace CodeWorks
     {
         public bool Enabled { get; set; }
 
+        [Editor("System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public List<string> FolderPaths { get; set; }
 
         [Editor("System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
@@ -49,6 +51,7 @@ namespace CodeWorks
         [Editor("System.Windows.Forms.Design.StringCollectionEditor,System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
         public List<string> IgnoreFilenamesEndsWith { get; set; }
 
+        [Editor(typeof(FileNameEditor), typeof(UITypeEditor))]
         public string LicenseTextPath { get; set; }
 
         private string licenseText;
