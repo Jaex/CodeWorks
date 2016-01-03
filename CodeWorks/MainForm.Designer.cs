@@ -212,13 +212,13 @@
             // 
             // btnOrderLines
             // 
-            this.btnOrderLines.Location = new System.Drawing.Point(920, 8);
+            this.btnOrderLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrderLines.Location = new System.Drawing.Point(912, 8);
             this.btnOrderLines.Name = "btnOrderLines";
-            this.btnOrderLines.Size = new System.Drawing.Size(128, 24);
+            this.btnOrderLines.Size = new System.Drawing.Size(136, 24);
             this.btnOrderLines.TabIndex = 5;
-            this.btnOrderLines.Text = "Clipboard lines A-Z";
+            this.btnOrderLines.Text = "Sort lines in clipboard";
             this.btnOrderLines.UseVisualStyleBackColor = true;
-            this.btnOrderLines.Visible = false;
             this.btnOrderLines.Click += new System.EventHandler(this.btnOrderLines_Click);
             // 
             // btnSettings

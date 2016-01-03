@@ -53,16 +53,18 @@ namespace CodeWorks
 
             foreach (WorkInfo info in Program.Settings.Works)
             {
-                foreach (string folderPath in info.FolderPaths)
+                if (info.Enabled)
                 {
-                    SearchFolderRegionAreas(info, folderPath);
+                    foreach (string folderPath in info.FolderPaths)
+                    {
+                        SearchFolderRegionAreas(info, folderPath);
+                    }
                 }
             }
 
             int count = lvResults.Items.Count;
-            lblFileCount.Text = "Status: Found " + lvResults.Items.Count + " files.";
-
-            btnAddLicense.Enabled = btnAddLicenseAll.Enabled = lvResults.Items.Count > 0;
+            lblFileCount.Text = $"Status: Found {count} files.";
+            btnAddLicense.Enabled = btnAddLicenseAll.Enabled = count > 0;
 
             SystemSounds.Exclamation.Play();
         }
@@ -195,8 +197,18 @@ namespace CodeWorks
             Array.Sort(lines);
             string result = string.Join("\r\n", lines);
 
-            tbDefaultText.Text = clipboard;
-            tbNewText.Text = result;
+            if (!clipboard.Equals(result, StringComparison.InvariantCulture))
+            {
+                tbDefaultText.Text = clipboard;
+                tbNewText.Text = result;
+            }
+            else
+            {
+                tbDefaultText.Clear();
+                tbNewText.Clear();
+            }
+
+            SystemSounds.Exclamation.Play();
         }
 
         private void btnCopyToClipboard_Click(object sender, EventArgs e)
