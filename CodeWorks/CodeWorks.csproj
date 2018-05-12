@@ -83,6 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseSettings.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="ResXManager.cs" />
     <Compile Include="RuntimeServiceProvider.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="WorkInfo.cs" />

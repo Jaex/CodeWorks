@@ -40,6 +40,12 @@ namespace CodeWorks
         {
             InitializeComponent();
             Icon = Resources.Icon;
+
+            tbDefaultText.SupportSelectAll();
+            tbNewText.SupportSelectAll();
+            txtResXOriginal.SupportSelectAll();
+            txtResXModified.SupportSelectAll();
+            txtResXResult.SupportSelectAll();
         }
 
         private void btnFindRegionAreas_Click(object sender, EventArgs e)
@@ -225,6 +231,11 @@ namespace CodeWorks
             UITypeEditor editor = (UITypeEditor)pd.GetEditor(typeof(UITypeEditor));
             RuntimeServiceProvider serviceProvider = new RuntimeServiceProvider();
             editor.EditValue(serviceProvider, serviceProvider, Program.Settings.Works);
+        }
+
+        private void btnResXCompare_Click(object sender, EventArgs e)
+        {
+            txtResXResult.Text = ResXManager.Compare(txtResXOriginal.Text, txtResXModified.Text);
         }
     }
 }
