@@ -34,10 +34,13 @@ namespace CodeWorks
     {
         public static string Compare(string originalText, string modifiedText)
         {
-            if (string.IsNullOrEmpty(originalText) || string.IsNullOrEmpty(modifiedText))
+            if (string.IsNullOrWhiteSpace(originalText) || string.IsNullOrWhiteSpace(modifiedText))
             {
                 return "";
             }
+
+            originalText = originalText.Trim();
+            modifiedText = modifiedText.Trim();
 
             StringBuilder sb = new StringBuilder();
 
@@ -55,8 +58,8 @@ namespace CodeWorks
 
             sb.AppendLine(lineCountDifference.ToString());
 
-            XDocument original = XDocument.Parse(originalText.Trim());
-            XDocument modified = XDocument.Parse(modifiedText.Trim());
+            XDocument original = XDocument.Parse(originalText);
+            XDocument modified = XDocument.Parse(modifiedText);
 
             Dictionary<string, string> originalDict = new Dictionary<string, string>();
 
@@ -86,7 +89,7 @@ namespace CodeWorks
                 }
                 else
                 {
-                    Console.WriteLine($"Duplicate (Modified): {name}");
+                    sb.AppendLine($"Duplicate (Modified): {name}");
                 }
             }
 
