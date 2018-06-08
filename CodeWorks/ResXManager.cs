@@ -32,17 +32,31 @@ namespace CodeWorks
 {
     public static class ResXManager
     {
-        public static string Compare(string text1, string text2)
+        public static string Compare(string originalText, string modifiedText)
         {
-            if (string.IsNullOrEmpty(text1) || string.IsNullOrEmpty(text2))
+            if (string.IsNullOrEmpty(originalText) || string.IsNullOrEmpty(modifiedText))
             {
                 return "";
             }
 
             StringBuilder sb = new StringBuilder();
 
-            XDocument original = XDocument.Parse(text1.Trim());
-            XDocument modified = XDocument.Parse(text2.Trim());
+            long originalTextLineCount = originalText.Lines().Length;
+            long modifiedTextLineCount = modifiedText.Lines().Length;
+            long lineCountDifference = modifiedTextLineCount - originalTextLineCount;
+            sb.AppendLine("Original text line count: " + originalTextLineCount);
+            sb.AppendLine("Modified text line count: " + modifiedTextLineCount);
+            sb.Append("Line count difference: ");
+
+            if (lineCountDifference > 0)
+            {
+                sb.Append("+");
+            }
+
+            sb.AppendLine(lineCountDifference.ToString());
+
+            XDocument original = XDocument.Parse(originalText.Trim());
+            XDocument modified = XDocument.Parse(modifiedText.Trim());
 
             Dictionary<string, string> originalDict = new Dictionary<string, string>();
 

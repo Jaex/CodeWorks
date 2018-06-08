@@ -44,5 +44,10 @@ namespace CodeWorks
                 }
             };
         }
+
+        public static string[] Lines(this string text)
+        {
+            return text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+        }
     }
 }
