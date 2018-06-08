@@ -235,7 +235,12 @@ namespace CodeWorks
 
         private void btnResXCompare_Click(object sender, EventArgs e)
         {
-            txtResXResult.Text = ResXManager.Compare(txtResXOriginal.Text, txtResXModified.Text);
+            ResXManager resxManager = new ResXManager();
+
+            if (resxManager.Compare(txtResXOriginal.Text, txtResXModified.Text))
+            {
+                txtResXResult.Text = resxManager.ToString();
+            }
         }
     }
 }
