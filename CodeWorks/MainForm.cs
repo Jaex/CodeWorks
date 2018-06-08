@@ -241,6 +241,10 @@ namespace CodeWorks
             {
                 txtResXResult.Text = resxManager.ToString();
             }
+            else
+            {
+                txtResXResult.Clear();
+            }
         }
     }
 }

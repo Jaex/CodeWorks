@@ -22,7 +22,6 @@
 
 #endregion License Information (GPL v3)
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,7 +103,6 @@ namespace CodeWorks
                     if (modifiedValue != resource.Value)
                     {
                         ChangedEntries.Add((resource.Key, resource.Value, modifiedValue));
-                        
                     }
 
                     modifiedKeys.Remove(resource.Key);
@@ -115,10 +113,7 @@ namespace CodeWorks
                 }
             }
 
-            foreach (KeyValuePair<string, string> resource in modifiedKeys)
-            {
-                AddedEntries.Add(resource.Key);
-            }
+            AddedEntries.AddRange(modifiedKeys.Keys);
 
             return true;
         }
@@ -133,16 +128,6 @@ namespace CodeWorks
             if (LineCountDifference > 0) sb.Append("+");
             sb.AppendLine(LineCountDifference.ToString());
 
-            foreach (string originalDuplicate in OriginalDuplicates)
-            {
-                sb.AppendLine($"Duplicate (Original): {originalDuplicate}");
-            }
-
-            foreach (string modifiedDuplicate in ModifiedDuplicates)
-            {
-                sb.AppendLine($"Duplicate (Modified): {modifiedDuplicate}");
-            }
-
             foreach (string addedEntry in AddedEntries)
             {
                 sb.AppendLine($"Added: {addedEntry}");
@@ -156,6 +141,16 @@ namespace CodeWorks
             foreach (string removedEntry in RemovedEntries)
             {
                 sb.AppendLine($"Removed: {removedEntry}");
+            }
+
+            foreach (string originalDuplicate in OriginalDuplicates)
+            {
+                sb.AppendLine($"Duplicate (Original): {originalDuplicate}");
+            }
+
+            foreach (string modifiedDuplicate in ModifiedDuplicates)
+            {
+                sb.AppendLine($"Duplicate (Modified): {modifiedDuplicate}");
             }
 
             return sb.ToString().Trim();
